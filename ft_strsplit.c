@@ -6,7 +6,7 @@
 /*   By: vmuradia <vmuradia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 21:01:33 by vmuradia          #+#    #+#             */
-/*   Updated: 2018/10/27 12:47:36 by vmuradia         ###   ########.fr       */
+/*   Updated: 2018/10/27 14:58:34 by vmuradia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,12 @@ char			**ft_strsplit(char const *s, char c)
 	}
 	res[i] = NULL;
 	return (res);
+}
+
+#include <stdio.h>
+
+int main()
+{
+	printf("%s", *ft_strsplit("hello", 'a'));
+
 }
