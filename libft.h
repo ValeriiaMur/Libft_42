@@ -6,7 +6,7 @@
 /*   By: vmuradia <vmuradia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 18:52:12 by vmuradia          #+#    #+#             */
-/*   Updated: 2018/10/28 10:08:00 by vmuradia         ###   ########.fr       */
+/*   Updated: 2018/10/28 10:42:31 by vmuradia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,8 @@ char				*ft_strmap(char const *s, char (*f)(char));
 char				*ft_strmapi(char const *s, char (*f) (unsigned int, char));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_absolut(int i);
+char				*ft_strrev(char *str);
+size_t				ft_list_size(t_list *lst);
+void				ft_lstrev(t_list **alst);
 
 #endif

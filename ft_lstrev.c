@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmuradia <vmuradia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/22 12:06:52 by vmuradia          #+#    #+#             */
-/*   Updated: 2018/10/26 15:16:32 by vmuradia         ###   ########.fr       */
+/*   Created: 2018/10/28 10:32:17 by vmuradia          #+#    #+#             */
+/*   Updated: 2018/10/28 10:33:09 by vmuradia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+void		ft_lstrev(t_list **alst)
 {
-	int long	res;
-	int			neg;
-	const char	*s;
+	t_list	*last;
+	t_list	*cur;
+	t_list	*next;
 
-	s = str;
-	while (*s && ft_isspace(*s))
-		s++;
-	neg = 1;
-	if (*s == '+' || *s == '-')
-		if (*s++ == '-')
-			neg = -1;
-	res = 0;
-	while (*s >= '0' && *s <= '9')
+	last = NULL;
+	cur = *alst;
+	while (cur != NULL)
 	{
-		res = res * 10 + neg * (*s++ - 48);
+		next = cur->next;
+		cur->next = last;
+		last = cur;
+		cur = next;
 	}
-	return ((int)res);
+	*alst = last;
 }

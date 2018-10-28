@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_list_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmuradia <vmuradia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/22 12:06:52 by vmuradia          #+#    #+#             */
-/*   Updated: 2018/10/26 15:16:32 by vmuradia         ###   ########.fr       */
+/*   Created: 2018/10/28 10:28:35 by vmuradia          #+#    #+#             */
+/*   Updated: 2018/10/28 10:30:59 by vmuradia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+size_t	ft_list_size(t_list *lst)
 {
-	int long	res;
-	int			neg;
-	const char	*s;
+	size_t	size;
 
-	s = str;
-	while (*s && ft_isspace(*s))
-		s++;
-	neg = 1;
-	if (*s == '+' || *s == '-')
-		if (*s++ == '-')
-			neg = -1;
-	res = 0;
-	while (*s >= '0' && *s <= '9')
+	size = 0;
+	while (lst != NULL)
 	{
-		res = res * 10 + neg * (*s++ - 48);
+		size++;
+		lst = lst->next;
 	}
-	return ((int)res);
+	return (size);
 }

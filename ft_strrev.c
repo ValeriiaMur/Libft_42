@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmuradia <vmuradia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/22 12:06:52 by vmuradia          #+#    #+#             */
-/*   Updated: 2018/10/26 15:16:32 by vmuradia         ###   ########.fr       */
+/*   Created: 2018/10/28 10:15:57 by vmuradia          #+#    #+#             */
+/*   Updated: 2018/10/28 10:25:59 by vmuradia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+char	*ft_strrev(char *str)
 {
-	int long	res;
-	int			neg;
-	const char	*s;
+	int		count;
+	int		size;
+	char	c;
 
-	s = str;
-	while (*s && ft_isspace(*s))
-		s++;
-	neg = 1;
-	if (*s == '+' || *s == '-')
-		if (*s++ == '-')
-			neg = -1;
-	res = 0;
-	while (*s >= '0' && *s <= '9')
+	size = ft_strlen(str);
+	count = size;
+	while (count > size / 2)
 	{
-		res = res * 10 + neg * (*s++ - 48);
+		c = str[size - count];
+		str[size - count] = str[count - 1];
+		str[count - 1] = c;
+		count--;
 	}
-	return ((int)res);
+	return (str);
 }
