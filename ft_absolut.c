@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cntwrd.c                                        :+:      :+:    :+:   */
+/*   ft_absolut.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmuradia <vmuradia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/24 21:09:22 by vmuradia          #+#    #+#             */
-/*   Updated: 2018/10/27 15:39:12 by vmuradia         ###   ########.fr       */
+/*   Created: 2018/10/27 18:00:09 by vmuradia          #+#    #+#             */
+/*   Updated: 2018/10/28 10:07:31 by vmuradia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_cntwrd(char const *s, char c)
+int	ft_absolut(int i)
 {
-	unsigned int	i;
-	int				cntr;
-
-	i = 0;
-	cntr = 0;
-	while (s[i])
+	if (i < 0)
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] != '\0')
-			cntr++;
-		while (s[i] && (s[i] != c))
-			i++;
+		i = -1;
+		return (i);
 	}
-	return (cntr);
+	return (0);
 }

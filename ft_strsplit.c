@@ -6,26 +6,26 @@
 /*   By: vmuradia <vmuradia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 21:01:33 by vmuradia          #+#    #+#             */
-/*   Updated: 2018/10/27 15:36:56 by vmuradia         ###   ########.fr       */
+/*   Updated: 2018/10/28 10:10:09 by vmuradia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_cnt_parts(const char *s, char c)
+static int	ft_counter(const char *s, char c)
 {
-	int		cnt;
-	int		in_substr;
+	int	cnt;
+	int	inside;
 
-	in_substr = 0;
+	inside = 0;
 	cnt = 0;
 	while (*s != '\0')
 	{
-		if (in_substr == 1 && *s == c)
-			in_substr = 0;
-		if (in_substr == 0 && *s != c)
+		if (inside == 1 && *s == c)
+			inside = 0;
+		if (inside == 0 && *s != c)
 		{
-			in_substr = 1;
+			inside = 1;
 			cnt++;
 		}
 		s++;
@@ -33,7 +33,7 @@ static int	ft_cnt_parts(const char *s, char c)
 	return (cnt);
 }
 
-static int	ft_wlen(const char *s, char c)
+static int	ft_dellen(char const *s, char c)
 {
 	int		len;
 
@@ -48,27 +48,27 @@ static int	ft_wlen(const char *s, char c)
 
 char		**ft_strsplit(char const *s, char c)
 {
-	char	**t;
+	char	**res;
 	int		nb_word;
 	int		i;
 
 	i = 0;
 	if (!s)
 		return (NULL);
-	nb_word = ft_cnt_parts((const char *)s, c);
-	t = (char **)malloc(sizeof(*t) * (ft_cnt_parts((const char *)s, c) + 1));
-	if (t == NULL)
+	nb_word = ft_counter((const char *)s, c);
+	res = (char **)malloc(sizeof(*res) * (ft_counter((const char *)s, c) + 1));
+	if (res == NULL)
 		return (NULL);
 	while (nb_word--)
 	{
 		while (*s == c && *s != '\0')
 			s++;
-		t[i] = ft_strsub((const char *)s, 0, ft_wlen((const char *)s, c));
-		if (t[i] == NULL)
+		res[i] = ft_strsub((const char *)s, 0, ft_dellen((const char *)s, c));
+		if (res[i] == NULL)
 			return (NULL);
-		s = s + ft_wlen(s, c);
+		s = s + ft_dellen(s, c);
 		i++;
 	}
-	t[i] = NULL;
-	return (t);
+	res[i] = NULL;
+	return (res);
 }
